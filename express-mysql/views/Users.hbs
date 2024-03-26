@@ -1,0 +1,30 @@
+{{#extends "base"}}
+{{#block "content"}}
+
+<table class ="table">
+    <thread>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+        </tr>
+    </thread>
+    <tbody>
+        {{#each Users}}
+         <tr>
+            <td>{{this.user_id}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.address}}</td>
+            <td>{{this.contact_no}}</td>
+         </tr>
+
+        {{/each}}
+    </tbody>
+
+</table>
+{{/block}}
+
+{{/extends}}
