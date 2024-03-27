@@ -4,21 +4,25 @@
 <table class ="table">
     <thread>
         <tr>
-            <th>User ID</th>
+            {{!-- <th>User ID</th> --}}
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
             <th>Contact Number</th>
+            <th></th>
         </tr>
     </thread>
     <tbody>
         {{#each Users}}
          <tr>
-            <td>{{this.user_id}}</td>
+            {{!-- <td>{{this.user_id}}</td> --}}
             <td>{{this.name}}</td>
             <td>{{this.email}}</td>
             <td>{{this.address}}</td>
             <td>{{this.contact_no}}</td>
+            <td>
+                <a href="/delete-Users/{{this.user_id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
          </tr>
 
         {{/each}}
