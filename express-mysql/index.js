@@ -12,6 +12,10 @@ const app = express();
 //set up the view engine
 app.set('view engine','hbs');
 
+// require('handlebars-helpers')({
+    // handlebars:hbs.handlebars
+// })
+
 //enable static files
 app.use(express.static('public'));
 
@@ -74,13 +78,25 @@ async function main(){
     })
     app.get('/update-Users/:UserId',async function(req,res){
         const {UserId} = req.params;
-        const query = `SELECT * FROM Users WHERE user_id = ${req.params.UserId}`;
+        const query = `SELECT * FROM Users WHERE user_id = ${UserId}`;
         const [Users]=await connection.execute(query);
         const wantedUser = Users[0];
 
-        res.redirect('update-customer');
+        res.render('update-Users',{
+            'user':wantedUser
+
+        });
     })
-    
+    app.post('/update-Users/:UserId',async function(req,res){
+        const {UserId} = req.params;
+        const {name,email,address,contact_no}=req.body;
+        const query = `UPDATE Users SET name="${name}", 
+        email="${email}",
+        address="${address}",
+        contact_no=${contact_no} WHERE user_id = ${UserId}`;
+        const [Users]=await connection.execute(query);
+        res.redirect('/Users');
+    })
 }
 
 main();

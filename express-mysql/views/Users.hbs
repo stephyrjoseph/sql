@@ -1,7 +1,59 @@
 {{#extends "base"}}
 {{#block "content"}}
+<style>
+   .users-page {
+    padding-top: 10px;
+    background: linear-gradient(135deg, #3498db, #8e44ad); 
 
-<table class ="table">
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background: linear-gradient(90deg, rgba(0,143,255,1) 0%, rgba(0,209,255,1) 100%);
+    
+    color: #fff; 
+    border-radius: 8px; 
+    overflow: hidden; 
+  }
+
+  /* CSS for table header */
+  .custom-table th {
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px; 
+    text-align: left;
+  }
+
+
+  .custom-table td {
+    padding: 10px; 
+  }
+
+  
+  .custom-table .btn {
+    padding: 5px 10px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    text-decoration: none;
+  }
+
+ 
+  .custom-table .btn-update {
+    background-color: #28a745; 
+    color: #fff; 
+    margin-right: 5px; 
+  }
+
+
+  .custom-table .btn-delete {
+    background-color: #dc3545; 
+    color: #fff; 
+  }
+</style>
+
+<div class="users-page">
+
+<table class ="table custom-table">
     <thread>
         <tr>
             {{!-- <th>User ID</th> --}}
@@ -9,7 +61,8 @@
             <th>Email</th>
             <th>Address</th>
             <th>Contact Number</th>
-            <th></th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
     </thread>
     <tbody>
@@ -20,6 +73,9 @@
             <td>{{this.email}}</td>
             <td>{{this.address}}</td>
             <td>{{this.contact_no}}</td>
+             <td>
+                <a href="/update-Users/{{this.user_id}}" class="btn btn-primary btn-sm">Update</a>
+            </td>
             <td>
                 <a href="/delete-Users/{{this.user_id}}" class="btn btn-danger btn-sm">Delete</a>
             </td>
@@ -29,6 +85,7 @@
     </tbody>
 
 </table>
+</div>
 {{/block}}
 
 {{/extends}}
